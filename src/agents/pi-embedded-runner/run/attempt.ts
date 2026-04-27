@@ -725,7 +725,9 @@ export async function runEmbeddedAttempt(
       });
     };
 
-    const skillScope = params.skillsSnapshot ? "snapshot" : "workspace";
+    const skillScope: "snapshot" | "workspace" | "disabled" = params.skillsSnapshot
+      ? "snapshot"
+      : "workspace";
     const skillDiagnosticBase = (
       skillName: string,
       trace = freezeDiagnosticTraceContext(createChildDiagnosticTraceContext(runTrace)),
