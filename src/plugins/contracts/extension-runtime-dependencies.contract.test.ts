@@ -25,6 +25,11 @@ const INDIRECT_RUNTIME_DEPENDENCIES = new Map<string, Set<string>>([
     // Baileys loads jimp as an optional peer when it needs media thumbnails.
     new Set(["jimp"]),
   ],
+  [
+    "extensions/qa-lab",
+    // qa-lab imports qa-channel at runtime via plugin boundaries.
+    new Set(["@openclaw/qa-channel"]),
+  ],
 ]);
 
 type PackageManifest = {
