@@ -731,7 +731,14 @@ export async function runEmbeddedAttempt(
     const skillDiagnosticBase = (
       skillName: string,
       trace = freezeDiagnosticTraceContext(createChildDiagnosticTraceContext(runTrace)),
-    ) => ({
+    ): {
+      runId: string;
+      sessionKey?: string;
+      sessionId?: string;
+      skillName: string;
+      skillScope: "snapshot" | "workspace" | "disabled";
+      trace: DiagnosticTraceContext;
+    } => ({
       runId: params.runId,
       ...(params.sessionKey && { sessionKey: params.sessionKey }),
       ...(params.sessionId && { sessionId: params.sessionId }),
